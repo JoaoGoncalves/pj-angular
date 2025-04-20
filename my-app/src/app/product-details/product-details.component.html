@@ -1,0 +1,17 @@
+@let selectedProduct = product()!;
+
+@if(selectedProduct){
+    <!-- "!" non-null assertion -->
+    <div>
+        <p>You seleted: <strong>{{selectedProduct.title}}</strong></p>
+        <p><strong>{{selectedProduct.price | currency : 'EUR'}}</strong></p>
+
+        <div class="pill-group">
+            @for (cat of selectedProduct.categories | keyvalue; track cat.key) {
+            <p class="pill">{{cat.value | lowercase }}</p>
+        }
+        </div>
+
+        <button (click)="addToCart()">Add To Cart</button>
+    </div>
+}

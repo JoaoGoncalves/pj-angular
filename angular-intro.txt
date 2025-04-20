@@ -1,0 +1,82 @@
+
+ANGULAR INTRODUÇÃO
+
+OBJETIVOS DO CURSO
+Angular tornou-se desde a sua primeira versão AngularJS (2010), uma das frameworks de Javascript mais utilizadas até os dias de hoje, a partir da versão Angular 2(2016), sofreu a sua maior alteração, totalmente reescrita em “Typescript”.
+
+Pretende-se com este curso dar uma formação sólida, atual e rigorosa sobre as ultimas versões da framework Angular (V14, ..., V18) da Google, dotando os formandos na capacidade de criar SPA (Single Page Aplications), quer tenham ou não conhecimentos prévios da framework.
+
+Neste curso será feita uma breve introdução á Framework Angular, onde será abordados assuntos como estruturação de uma aplicação em Angular, criação de componentes (standalone), Dependency Injecion, serviços, directivas, navegação com routing, reactive forms, gestão de “state” com Observables e Signals e HttpClient.
+
+DESTINATÁRIOS
+Front-End developers que queiram aprofundar os seus conhecimentos no desenvolvimento de Single Page Aplications (SPA) com a Framework Angular.
+
+PRÉ-REQUISITOS
+Confortáveis com HTML5 e Javascript na sua especificação standard ES6+. Não é necessário qualquer tipo de conhecimento de versões anteriores de Angular.
+
+METODOLOGIA
+A metodologia a adoptar nesta formação será num conceito “hands on Training”, ou seja, os conceitos serão introduzidos através de exemplos praticas efetuados pelo formador e acompanhado pela execução simultânea dos formandos, haverá momentos intermédios de aplicação pratica de conceitos através da execução de exercícios no sentido de avaliação de aquisição de conceitos da formação.
+
+CONTEUDO PROGRAMÁTICO
+
+1. Introdução
+- Apresentação do curso, conteúdos e enquadramento do desenvolvimento Web com Angular nos dias de hoje
+- "Core Features" do Angular e ultimas "Features", das versões mais recentes.
+- O que é uma aplicação em Angular
+- Utilização do Angular CLI, criação de um novo projecto
+- Demonstração practica da estrutura de uma aplicação em Angular
+
+2. Elementos estruturais de uma Aplicação em Angular
+- Components
+- Services
+- Directives
+- Pipes
+- Conceito de Data-Binding em Angular
+
+
+3. Navegação entre componentes de uma Aplicação - Routing
+- Conceitos básicos de “Routing”
+- implementação de “Routing” numa aplicação em Angular
+
+4. Dependency Injection em Angular
+- Introdução ao Padrão de Desenho DI (Dependency Injection),  e IOC (Inversion Of Control), contextos de DI
+- “Injectors” e “Providers”, “injectar” um serviço, utilização do HttpClient.
+
+5. Reactive Programming com RXJS
+- Conceito e abordagem pormenorizada sobre reactive programming, Observables, Observers, Subscrições, Operadores ...
+- "unsubscribing" Observables, problemas em versoes anteriores novas formas "dessubscrever" Observables, com DetroyRef, takeuntildestroyed()
+
+6. Estratégia de comunicação entre componentes
+- Criar “loosely-coupled” components (@Input e @output properties)
+- Como passar dados entre componentes hierarquicamente relacionadas
+- Utilização do Padrão de Desenho “Mediator” através de DI de serviços
+- “Change Detection” em Angular e métodos “lifecycle” de uma componente
+
+7. Signals
+1- Nova abordagem no conceito de reatividade em Angular com Signals
+2- criação e atualização de state em Signals 
+3- Utilização de Signals em componentes, gestão de Signals em componentes
+4- Computed Signals, para simplificar o "Business Logic" em componentes
+5- Utilização de side effects em Angular com "Effects", conceito e utilização
+
+8. Introdução a API Forms do Angular
+- Template-driven forms em Angular
+- Reactive forms em Angular
+- Utilizar o FormBuilder
+
+9. Interacção com servidores através do HttpClient
+- Introdução ao Modulo HttpClient
+- Efetuar chamadas para o servidor
+
+10. Modern Angular
+1- Novas sintaxes para templates, utilização de @if, @for(), @switch, em detrimento das directivas e suas vantagens
+2- Deferring Views nas templates, lazy loading sem "Dinamic imports de JS"
+
+
+Formador: João Gonçalves
+
+Duração: 35H
+
+DATA: a Definir
+
+LOCAL: A definir
