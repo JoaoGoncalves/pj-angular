@@ -5,7 +5,7 @@ import { SortPipe } from '../sort.pipe';
 
 @Component({
   selector: 'app-product-details',
-  imports: [CurrencyPipe, KeyValuePipe, LowerCasePipe, SortPipe],
+  imports: [CurrencyPipe, KeyValuePipe, LowerCasePipe],
   templateUrl: './product-details.component.html',
   styleUrl: './product-details.component.css',
   encapsulation: ViewEncapsulation.Emulated,
