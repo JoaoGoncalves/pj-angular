@@ -3,7 +3,7 @@ import { RouterOutlet } from '@angular/router';
 import { ProductListComponent } from './product-list/product-list.component';
 import { CopyrightDirective } from './copyright.directive';
 import { APP_SETTINGS, appSettings } from './app.settings';
-import { from, of } from 'rxjs';
+import { from, Observable, of } from 'rxjs';
 
 
 @Component({
@@ -17,7 +17,20 @@ export class AppComponent {
   title = 'Ola Universo';
   settings = inject(APP_SETTINGS);
 
+  title$ = new Observable( observer => {
+    setInterval( ()=> observer.next(undefined), 1000);
+  })
+
   constructor(){
+    this.title$.subscribe(this.setTitle)
+  }
+
+  private setTitle = () => {
+    const timestamp = new Date();
+    this.title = `${this.settings.title} <br> ${timestamp}`;
+  }
+
+ /*  constructor(){
 
     console.log('------------- of() ------------------');
     //of(1 ,2 ,'joao', true, 6, 9).subscribe( val => console.log(val));
@@ -30,14 +43,12 @@ export class AppComponent {
 
     console.log('------------- from(array) ------------------');
     let nomes = ['joao', 'maria', 'antonio'];
-
     let nomes$ = from(nomes);
-
-    nomes$.subscribe( val => console.log(val))
-
+    nomes$.subscribe( val => console.log(val));
 
 
 
-  }
+
+  } */
 
 }
