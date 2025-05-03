@@ -18,14 +18,13 @@ export class AppComponent {
   title = 'Ola Universo';
   settings = inject(APP_SETTINGS);
 
-  title$ = new Observable( observer => {
+  /* title$ = new Observable( observer => {
     setInterval( ()=> observer.next(undefined), 1000);
-  })
+  }) */
+  title$ = interval(500);
 
   constructor(){
     this.title$.subscribe(this.setTitle);
-
-    
   }
 
   private setTitle = () => {
