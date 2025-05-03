@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Product } from './product';
+import { Observable, of } from 'rxjs';
 
 @Injectable(/* {
   providedIn: 'root' // tree shakable
@@ -7,10 +8,7 @@ import { Product } from './product';
 
 export class ProductsService {
 
-  constructor() { }
-
-  getProducts(): Product[]{
-    return [
+  private products: Product[] = [
       { 
         id: 1,
         title: 'Keyboard',
@@ -42,6 +40,11 @@ export class ProductsService {
         categories: { 4: 'Entertainment' }
       }
     ];
+
+  constructor() { }
+
+  getProducts(): Observable<Product[]>{
+    return of(this.products)
   }
   
 }
