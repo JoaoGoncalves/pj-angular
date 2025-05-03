@@ -3,12 +3,13 @@ import { Product } from '../product';
 import { ProductDetailsComponent } from "../product-details/product-details.component";
 import { SortPipe } from '../sort.pipe';
 import { ProductsService } from '../products.service';
-import { Subscription } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { AsyncPipe } from '@angular/common';
 
 @Component({
   selector: 'app-product-list',
-  imports: [ProductDetailsComponent, SortPipe],
+  imports: [ProductDetailsComponent, SortPipe, AsyncPipe],
   templateUrl: './product-list.component.html',
   styleUrl: './product-list.component.css',
   providers: [ProductsService]
@@ -17,24 +18,17 @@ export class ProductListComponent implements OnInit {
   
   productDetails = viewChild(ProductDetailsComponent);
   
-  products: Product[] = [];
+  products$: Observable<Product[]> | undefined;
   selectedProduct!: Product;
   
   private productsService = inject(ProductsService);
-  private destroyRef = inject(DestroyRef);
   
   ngOnInit(): void {
-    this.getproducts()
+    this.getproducts();
   }
-
   
-
   private getproducts(){
-    this.productsService.getProducts()
-    .pipe(takeUntilDestroyed(this.destroyRef))
-    .subscribe(
-      p => this.products = p
-    )
+    this.products$ = this.productsService.getProducts();
   }
 
   onAdded(product: Product){
