@@ -1,9 +1,10 @@
-import { Component, inject, OnDestroy, OnInit, viewChild } from '@angular/core';
+import { Component, DestroyRef, inject, OnDestroy, OnInit, viewChild } from '@angular/core';
 import { Product } from '../product';
 import { ProductDetailsComponent } from "../product-details/product-details.component";
 import { SortPipe } from '../sort.pipe';
 import { ProductsService } from '../products.service';
 import { Subscription } from 'rxjs';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 @Component({
   selector: 'app-product-list',
@@ -12,26 +13,26 @@ import { Subscription } from 'rxjs';
   styleUrl: './product-list.component.css',
   providers: [ProductsService]
 })
-export class ProductListComponent implements OnInit, OnDestroy {
+export class ProductListComponent implements OnInit {
   
   productDetails = viewChild(ProductDetailsComponent);
-  private productsSub: Subscription | undefined;
   
   products: Product[] = [];
   selectedProduct!: Product;
   
   private productsService = inject(ProductsService);
+  private destroyRef = inject(DestroyRef);
   
   ngOnInit(): void {
     this.getproducts()
   }
 
-  ngOnDestroy(): void {
-    this.productsSub?.unsubscribe();
-  }
+  
 
   private getproducts(){
-    this.productsSub = this.productsService.getProducts().subscribe(
+    this.productsService.getProducts()
+    .pipe(takeUntilDestroyed(this.destroyRef))
+    .subscribe(
       p => this.products = p
     )
   }
