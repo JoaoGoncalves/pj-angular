@@ -14,8 +14,7 @@ import { SortPipe } from '../sort.pipe';
 export class ProductDetailsComponent  {
 
   product = input<Product>();
-
-  added = output<Product>();
+  added   = output<Product>();
 
   addToCart(){
     this.added.emit(this.product()!);

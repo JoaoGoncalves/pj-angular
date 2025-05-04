@@ -3,7 +3,7 @@ import { RouterOutlet } from '@angular/router';
 import { ProductListComponent } from './product-list/product-list.component';
 import { CopyrightDirective } from './copyright.directive';
 import { APP_SETTINGS, appSettings } from './app.settings';
-import { filter, from, interval, map, Observable, of } from 'rxjs';
+import { BehaviorSubject, filter, from, interval, map, Observable, of, Subject } from 'rxjs';
 import { KeyLoggerComponent } from "./key-logger/key-logger.component";
 
 
@@ -25,13 +25,63 @@ export class AppComponent {
 
   constructor(){
     this.title$.subscribe(this.setTitle);
-  }
 
+    this.testesSubBS();
+  }
+  
+  
   private setTitle = () => {
     const timestamp = new Date();
     this.title = `${this.settings.title} <br> ${timestamp}`;
+    
+  }
+  
+  testesSubBS() {
+    console.log('------------------- COLD --------------------');
+
+    //COLD OBSERVABLES
+    let random$ = new Observable( observer => observer.next(Math.random()));
+    
+    let obs1 = random$.subscribe( num => console.log('OBS1: ', num));
+    let obs2 = random$.subscribe( num => console.log('OBS2: ', num));
+    let obs3 = random$.subscribe( num => console.log('OBS3: ', num));
+
+    console.log('-------------------- HOT - Behavior Subject --------------------');
+    //HOT 
+
+    let random2$ = new BehaviorSubject(0);
+
+    random2$.next(Math.random());
+
+    let obsBS1 = random2$.subscribe( num => console.log("Observer Subject1: ", num));
+    let obsBS2 = random2$.subscribe( num => console.log("Observer Subject2: ", num));
+    let obsBS3 = random2$.subscribe( num => console.log("Observer Subject3: ", num));
+
+    console.log('-------------------- HOT - Subject --------------------');
+
+    let subject = new Subject();
+
+    subject.next('a');
+    subject.next('b');
+    subject.subscribe( val => console.log("subscricao recebeu: ", val));
+    subject.next('c');
+    subject.next('d');
+    
+    console.log('----------------------------------');
+
+    let bSubject = new BehaviorSubject('a');
+
+    bSubject.next('a');
+    bSubject.next('b');
+    bSubject.subscribe( val => console.log("subscricao recebeu: ", val));
+    subject.next('c');
+    subject.next('d');
+
+
+    console.log('----------------------------------');
 
   }
+
 
  /*  constructor(){
 
@@ -76,5 +126,6 @@ export class AppComponent {
     console.log("-------------------")
 
   } */
+
 
 }
