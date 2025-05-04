@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Book } from '../types/book';
+import { Observable, of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -69,19 +70,20 @@ export class BooksService {
     },
   ]
 
-  getBooks(): Book[]{
-    return this.books;
+  getBooks(): Observable<Book[]>{
+    return of([...this.books]);
   }
 
-  getReadBooks(): Book[]{
-    return this.books.filter( b => b.alreadyRead === true)
+  getReadBooks(): Observable<Book[]>{
+    return of(this.books.filter( b => b.alreadyRead === true))
   }
-  getNotReadBooks(): Book[]{
-    return this.books.filter( b => b.alreadyRead === false)
+  getNotReadBooks(): Observable<Book[]>{
+    return of(this.books.filter( b => b.alreadyRead === false))
   }
 
-  deleteBook(id: number){
-    return this.books = this.books.filter( b => b.id !== id);
+  deleteBook(id: number): Observable<Book[]>{
+    this.books = this.books.filter( b => b.id !== id);
+    return of([...this.books])
   }
   
 }
