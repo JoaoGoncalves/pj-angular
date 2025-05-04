@@ -1,0 +1,14 @@
+@let books = (books$ | async);
+
+<app-book-filters
+    (showAll)="showAllBooks()"
+    (showNotRead)="showNotReadBooks()"
+    (showRead)="showReadBooks()"
+>
+</app-book-filters>
+
+<section class="grid">
+    @for (book of books; track book.id) {
+        <app-book [book]="book" (delete)="deleteBook($event)"></app-book>
+    }
+</section>

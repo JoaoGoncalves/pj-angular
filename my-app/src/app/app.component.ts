@@ -26,7 +26,7 @@ export class AppComponent {
   constructor(){
     this.title$.subscribe(this.setTitle);
 
-    this.testesSubBS();
+    //this.testesSubBS();
   }
   
   
@@ -36,7 +36,7 @@ export class AppComponent {
     
   }
   
-  testesSubBS() {
+  /* testesSubBS() {
     console.log('------------------- COLD --------------------');
 
     //COLD OBSERVABLES
@@ -79,8 +79,7 @@ export class AppComponent {
 
 
     console.log('----------------------------------');
-
-  }
+  } */
 
 
  /*  constructor(){
