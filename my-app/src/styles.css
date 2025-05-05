@@ -12,3 +12,12 @@
       box-sizing: inherit;
       position: relative;
   }
+
+  a {
+    text-decoration: none;
+  }
+  .spacer {
+    flex: 1 1 auto;
+  }
+
+ 

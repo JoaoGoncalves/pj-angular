@@ -4,9 +4,9 @@ import { Observable, of } from 'rxjs';
 import { APP_SETTINGS } from './app.settings';
 import { HttpClient, HttpParams } from '@angular/common/http';
 
-@Injectable(/* {
+@Injectable({
   providedIn: 'root' // tree shakable
-} */)
+})
 
 export class ProductsService {
   

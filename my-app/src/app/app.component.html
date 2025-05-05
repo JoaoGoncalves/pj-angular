@@ -1,14 +1,16 @@
-<header>{{settings.title}}</header>
-<hr>
+<header>
+  <h2>{{settings.title}}</h2>
+  <span class="spacer"></span>
+<div class="menu-links">
+  <a routerLink="/products" routerLinkActive="active">Products</a>
+  <a routerLink="/cart" routerLinkActive="active">My Cart</a>
+</div>
+</header>
 
 
 <main class="main">
   <div class="content">
-    <div class="left-side">
-      <app-product-list></app-product-list>
-    </div>
+    <router-outlet />
   </div>
 </main>
 <footer appCopyright> - {{settings.version}}</footer>
-
-<router-outlet />

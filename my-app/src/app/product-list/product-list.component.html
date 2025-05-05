@@ -8,24 +8,18 @@
      
     @for (product of products | sort; track product.id; let i = $index) {
        
-        <li class="pill" (click)="selectedProduct = product">
+        <li class="pill">
             @switch (product.category) {
                 @case ('electronics') {⌨️}
                 @case ('jewelery') {💎}
                 @default {🏷️}
             }
-            {{product.title}} 
+            <a [routerLink]="[product.id]">{{product.title}} </a>
         </li>
     } @empty {
         <p>No Products Found!</p>
     }
 </ul>
-
-<app-product-details 
-    #productDetails
-    [id]="selectedProduct?.id" 
-    (added)="onAdded()"
-></app-product-details>
 
 <!-- @if (selectedProduct) {
     <p><strong>{{productDetails.product()!.title}}</strong></p>
