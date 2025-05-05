@@ -8,6 +8,10 @@ export const routes: Routes = [
     {path: '', redirectTo: 'products', pathMatch: 'full'},
     {path: 'products', component: ProductListComponent},
     {path: 'products/:id', component: ProductDetailsComponent},
-    {path: 'cart', component: CartComponent},
+    /* {path: 'cart', component: CartComponent}, */
+    {
+        path: 'cart',
+        loadComponent: ()=> import('./cart/cart.component').then(c => c.CartComponent) 
+    },
     {path: '**', component: PageNotFoundComponent},
 ];
