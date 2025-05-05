@@ -19,7 +19,7 @@ export class ProductListComponent implements OnInit {
   productDetails = viewChild(ProductDetailsComponent);
   
   products$: Observable<Product[]> | undefined;
-  selectedProduct!: Product;
+  selectedProduct: Product | undefined;
   
   private productsService = inject(ProductsService);
   
@@ -31,8 +31,8 @@ export class ProductListComponent implements OnInit {
     this.products$ = this.productsService.getProducts();
   }
 
-  onAdded(product: Product){
-    alert(`${product.title} added to the cart.`)
+  onAdded(){
+    alert(`${this.selectedProduct!.title} added to the cart.`)
   }
 
 }

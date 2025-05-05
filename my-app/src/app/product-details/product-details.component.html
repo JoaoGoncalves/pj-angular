@@ -1,4 +1,4 @@
-@let selectedProduct = product()!;
+@let selectedProduct = (product$ | async)!;
 
 @if(selectedProduct){
     <!-- "!" non-null assertion -->
@@ -7,9 +7,7 @@
         <p><strong>{{selectedProduct.price | currency : 'EUR'}}</strong></p>
 
         <div class="pill-group">
-            @for (cat of selectedProduct.categories | keyvalue; track cat.key) {
-            <p class="pill">{{cat.value | lowercase }}</p>
-        }
+            <p class="pill">{{selectedProduct.category | lowercase }}</p>
         </div>
 
         <button (click)="addToCart()">Add To Cart</button>
