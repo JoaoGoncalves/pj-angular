@@ -1,0 +1,23 @@
+Exercicio Angular Final:
+
+pegar no ultimo projeto da biblioteca, que irá consumir um modelo de dados na REST (MOOCK) API em: 
+https://my-json-server.typicode.com/JoaoGoncalves/biblio-api/books
+
+A aplicação deverár ter 4 "links" de navegação:
+- Home, com um texto qualquer, pagina inicial no arranque da aplicação
+- Books, com uma lista dos livros do modelo de dados em "Cards" e com informação de acordo com a imagem "books.png", usem as css que entenderem.
+- Contacts, com informação dummy...
+
+
+Pegar em tudo o que vimos até aqui, criar uma aplicação em que tudo é standalone, que deverá implementar:
+
+- ajustar os serviços necessários
+- carregar a componente Books por lazy loading
+- em cada "Card" da lista, link para os detalhes do livro, através do titulo
+
+
+
+
+
+
+ 
