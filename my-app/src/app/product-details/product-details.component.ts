@@ -16,6 +16,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class ProductDetailsComponent implements OnInit  {
   
   product$: Observable<Product> | undefined;
+  product: Product | undefined;
   private productsService = inject(ProductsService);
   //private router = inject(Router);
   private route = inject(ActivatedRoute);
@@ -26,12 +27,16 @@ export class ProductDetailsComponent implements OnInit  {
   ngOnInit(): void {
     //console.log('ID: ', this.route.snapshot.paramMap.get('id'));
     this.product$ = this.route.paramMap.pipe(
-      switchMap(params => this.productsService.getProduct(Number(params.get('id'))))
-    )
+      switchMap(params => {
+        return this.productsService.getProduct(Number(params.get('id')))
+      })
+    );
+
+   this.product$.subscribe( p => this.product = p);
   }
 
   addToCart(){
-
+    alert(`${this.product!.title} added to the cart.`)
   }
 
 }
