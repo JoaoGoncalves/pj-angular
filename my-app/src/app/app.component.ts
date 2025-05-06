@@ -3,13 +3,13 @@ import { RouterOutlet } from '@angular/router';
 import { ProductListComponent } from './product-list/product-list.component';
 import { CopyrightDirective } from './copyright.directive';
 import { APP_SETTINGS, appSettings } from './app.settings';
-import { filter, from, interval, map, Observable, of } from 'rxjs';
+import { BehaviorSubject, filter, from, interval, map, Observable, of, Subject } from 'rxjs';
 import { KeyLoggerComponent } from "./key-logger/key-logger.component";
 
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, ProductListComponent, CopyrightDirective, KeyLoggerComponent],
+  imports: [RouterOutlet, ProductListComponent, CopyrightDirective],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
   providers: [{provide: APP_SETTINGS, useValue: appSettings}]
@@ -25,6 +25,7 @@ export class AppComponent {
   constructor(){
     this.title$.subscribe( this.setTitle );
     //this.testeOperators();
+    this.testeSubject();
   }
   /* setTitle() {
     const timestamp = new Date();
@@ -36,7 +37,55 @@ export class AppComponent {
     this.title = `${this.settings.title} <br> ${timestamp}`;
   }
 
+  testeSubject(){
+    /* console.log('--------- COLD Observable -----');
 
+    let random$ = new Observable( obs => obs.next(Math.random()));
+
+    let obs1 = random$.subscribe( num => console.log('OBS1: ', num));
+    let obs2 = random$.subscribe( num => console.log('OBS2: ', num));
+    let obs3 = random$.subscribe( num => console.log('OBS3: ', num));
+
+    console.log('--------- HOT Observable -----');
+    
+    let random2$ = new BehaviorSubject(0);
+
+    random2$.next(Math.random());
+
+    let obsSub1 = random2$.subscribe( num => console.log('OBSSub1: ', num));
+    let obsSub2 = random2$.subscribe( num => console.log('OBSSub2: ', num));
+    let obsSub3 = random2$.subscribe( num => console.log('OBSSub3: ', num));
+ */
+
+
+    console.log('--------- Subject -----');
+
+    let subject = new Subject();
+
+    subject.next('a');
+    subject.next('b');
+    subject.next('c');
+    subject.subscribe( val => console.log('recebeu (SUB): ', val ))
+    subject.next('d');
+    subject.next('e');
+    subject.next('j');
+
+    console.log('--------- BehaviorSubject -----');
+
+    let bSubject = new BehaviorSubject('w');
+
+    bSubject.next('a');
+    bSubject.next('b');
+    bSubject.next('c');
+    bSubject.subscribe( val => console.log('recebeu (BEHSUB): ', val ))
+    bSubject.next('d');
+    bSubject.next('e');
+    bSubject.next('j');
+
+
+  }
+
+  }
   /* testeOperators(){
     console.log('--- Operators ---------');
 
@@ -82,4 +131,3 @@ export class AppComponent {
 
   } */
 
-}
