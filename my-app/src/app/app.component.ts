@@ -3,7 +3,7 @@ import { RouterOutlet } from '@angular/router';
 import { ProductListComponent } from './product-list/product-list.component';
 import { CopyrightDirective } from './copyright.directive';
 import { APP_SETTINGS, appSettings } from './app.settings';
-import { from, interval, Observable, of } from 'rxjs';
+import { filter, from, interval, map, Observable, of } from 'rxjs';
 import { KeyLoggerComponent } from "./key-logger/key-logger.component";
 
 
@@ -24,7 +24,7 @@ export class AppComponent {
 
   constructor(){
     this.title$.subscribe( this.setTitle );
-    this.testeOperators();
+    //this.testeOperators();
   }
   /* setTitle() {
     const timestamp = new Date();
@@ -37,10 +37,29 @@ export class AppComponent {
   }
 
 
-  testeOperators(){
-    console.log('----------- Operators ------------');
-  }
+  /* testeOperators(){
+    console.log('--- Operators ---------');
 
+    let cervejas = [
+      {nome:'Sagres', pais:'Portugal', preco: 1.90},
+      {nome:'Stella', pais:'Belgica', preco: 3.90},
+      {nome:'Trappe', pais:'Belgica', preco: 4.90},
+      {nome:'Guiness', pais:'Irlanda', preco: 2.90},
+      {nome:'Brahma', pais:'Brasil', preco: 1.50},
+    ]; 
+
+    let cervejas$ = from(cervejas);
+
+    cervejas$.pipe(
+      filter( cerveja => cerveja.preco > 2.5),
+      map( cerveja => `Cerveja: ${cerveja.nome} - €${cerveja.preco}`)
+    ).subscribe(
+      cer => console.log(cer)
+    )
+
+
+  }
+ */
   /* constructor(){
 
     console.log('------------- of() ------------------');
